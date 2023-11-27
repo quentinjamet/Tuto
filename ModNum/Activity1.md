@@ -25,10 +25,11 @@ Credits: Jonathan Gula (jonathan.gula@univ-brest.fr)
     cp ~/ModNum/croco/OCEAN/cppdefs.h ~/ModNum/case1/
     cp ~/ModNum/croco/OCEAN/param.h ~/ModNum/case1/
     cp ~/ModNum/croco/TEST_CASES/croco.in.Basin ~/ModNum/case1/croco.in
+    [cp ~/ModNum/croco/OCEAN/partit.F ~/ModNum/case1/]
     ```
-  * [Depending on the machine, you may also need to edit ```partit.F``` and to set
+  * Depending on the machine, you may also need to edit ```partit.F``` and to set
     ```
-    max_buff_size=16384]
+    max_buff_size=16384
     ```
 
  * The model needs a fortran compiler and compatible netcdf libraries
