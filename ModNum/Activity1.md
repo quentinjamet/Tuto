@@ -13,11 +13,15 @@ Credits: Jonathan Gula (jonathan.gula@univ-brest.fr)
 ![Alt text](https://github.com/quentinjamet/Tuto/blob/main/Figure/CROCO_content.png "a title")
 
   * Create a folder where you will run the model
+  * 
 ```mkdir ./case1``` or ```mkdir -p ```~/ModNum/case1```
 
   *we need to edit the following files: ```jobcomp```, ```cppdefs.h```, ```param.h```, ```croco.in``` so copy them into the folder you just created:
-```cp ~/ModNum/croco/OCEAN/jobcomp ~/ModNum/case1/```
-```cp ~/ModNum/croco/OCEAN/cppdefs.h ~/ModNum/case1/```
-```cp ~/ModNum/croco/OCEAN/param.h ~/ModNum/case1/```
-```cp ~/ModNum/croco/TEST_CASES/croco.in.Basin ~/ModNum/case1/croco.in```
+  
+```
+cp ~/ModNum/croco/OCEAN/jobcomp ~/ModNum/case1/
+cp ~/ModNum/croco/OCEAN/cppdefs.h ~/ModNum/case1/
+cp ~/ModNum/croco/OCEAN/param.h ~/ModNum/case1/
+cp ~/ModNum/croco/TEST_CASES/croco.in.Basin ~/ModNum/case1/croco.in
+```
 
