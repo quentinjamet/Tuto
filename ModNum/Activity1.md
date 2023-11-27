@@ -26,6 +26,10 @@ Credits: Jonathan Gula (jonathan.gula@univ-brest.fr)
     cp ~/ModNum/croco/OCEAN/param.h ~/ModNum/case1/
     cp ~/ModNum/croco/TEST_CASES/croco.in.Basin ~/ModNum/case1/croco.in
     ```
+ *Depending on the machine, you may also need to edit ```partit.F``` and to set
+ ```
+ max_buff_size=16384
+ ```
 
  * The model needs a fortran compiler and compatible netcdf libraries
     * With Linux on IUEM computers:
