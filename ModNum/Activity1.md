@@ -7,5 +7,5 @@
 
    ```git clone https://gitlab.inria.fr/croco-ocean/croco.git```
 
-  *You should see the different files dans directory of CROCO:
+  * You should see the different files dans directory of CROCO:
 
