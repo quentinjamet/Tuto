@@ -10,5 +10,5 @@ Credits: Jonathan Gula (jonathan.gula@univ-brest.fr)
 
   * You should see the different files dans directory of CROCO
     
-![Alt text](https://github.com/quentinjamet/Tuto/blob/main/Figure/CROCO_content.png)
+![Alt text](https://github.com/quentinjamet/Tuto/blob/main/Figure/CROCO_content.png "a title")
 
