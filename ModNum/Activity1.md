@@ -9,4 +9,6 @@ Credits: Jonathan Gula (jonathan.gula@univ-brest.fr)
    ```git clone https://gitlab.inria.fr/croco-ocean/croco.git```
 
   * You should see the different files dans directory of CROCO
+    
+![Alt text](https://github.com/quentinjamet/Tuto/blob/main/Figure/CROCO_content.png)
 
