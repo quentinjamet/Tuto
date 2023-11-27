@@ -120,7 +120,7 @@ defined in the ```param.h``` file). Type in your terminal:
    ./croco croco.in
    ```
 
-**QUESTIONS**
+## QUESTIONS
  * About the configuration: 
    * What is the forcing?
    * What is the Coriolis parameter?
