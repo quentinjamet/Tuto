@@ -40,7 +40,7 @@ cp ~/ModNum/croco/TEST_CASES/croco.in.Basin ~/ModNum/case1/croco.in
           ```
  * Go to your case and edit the jobcomp to specify the location of the source code:
 
-``FORTRAN
+``python
 SOURCE=~/ModNum/croco/OCEAN
 ``
 
