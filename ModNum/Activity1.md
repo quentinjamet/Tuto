@@ -111,3 +111,11 @@ defined in the ```param.h``` file). Type in your terminal:
    ./croco croco.in
    ```
 
+**QUESTIONS**
+ * About the configuration: 
+   * What is the forcing?
+   * What is the Coriolis parameter?
+   * What is the boundary condition?
+   * What is the bottom condition?
+ * About the circulation:
+    * Is it similar to Stommel’s gyre (http://ido.at.fcen.uba.ar/index_archivos/Stommel_1948.pdf)?
