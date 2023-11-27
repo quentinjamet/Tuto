@@ -1,0 +1,7 @@
+The following list is extracted from https://www.unixtutorial.org/basic-unix-commands,
+where you can find complementary Unix commands.
+
+- ```pwd```: get current directory
+- ```ls```: list files and directories
+- ```cd```: change directory
+- ```cp```: copy files (cp -r for directories)
