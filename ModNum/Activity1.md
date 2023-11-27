@@ -6,15 +6,19 @@ Credits: Jonathan Gula (jonathan.gula@univ-brest.fr)
   * Create a directory (e.g. ```mkdir ~/ModNum/```) for the project, then go there (e.g. ```cd ~/ModNum/```)
   * ```git clone``` the CROCO code from the official website:
 
-   ```git clone https://gitlab.inria.fr/croco-ocean/croco.git```
+   ```
+   git clone https://gitlab.inria.fr/croco-ocean/croco.git
+   ```
 
   * You should see the following files (using ```ls ./croco/```), and the source code (i.e. the FORTRAN files ```*.F```) will be in the folder ```./croco/OCEAN/```
     
 ![Alt text](https://github.com/quentinjamet/Tuto/blob/main/Figure/CROCO_content.png "a title")
 
   * Create a folder where you will run the model
-    
-```mkdir ./case1``` or ```mkdir -p ```~/ModNum/case1```
+```
+mkdir ./case1
+[or mkdir -p ~/ModNum/case1
+```
 
   * We need to edit the following files: ```jobcomp```, ```cppdefs.h```, ```param.h```, ```croco.in``` so copy them into the folder you just created:
 ```
@@ -39,11 +43,11 @@ cp ~/ModNum/croco/TEST_CASES/croco.in.Basin ~/ModNum/case1/croco.in
           #NETCDFINC=-I$(nf-config --includedir)
           ```
  * Go to your case and edit the ```jobcomp``` to specify the location of the source code:
-
-```SOURCE=~/ModNum/croco/OCEAN```
+```
+SOURCE=~/ModNum/croco/OCEAN
+```
 
  * Edit the ```cppdefs.h``` and choose the predefined test case $\color{red}{Basin}$:
-
 ```
 #define BASIN
 ...
