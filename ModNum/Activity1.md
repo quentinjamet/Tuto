@@ -1,4 +1,5 @@
 # Activity 1 – Run an idealized ocean gyre 
+Credits: Jonathan Gula (jonathan.gula@univ-brest.fr)
 
 * **Install and compile CROCO**
   * Open a terminal (e.g. ```Ctrl+Alt+T```)
