@@ -28,9 +28,8 @@ Credits: Jonathan Gula (jonathan.gula@univ-brest.fr)
     ```
   * [Depending on the machine, you may also need to edit ```partit.F``` and to set
     ```
-    max_buff_size=16384
+    max_buff_size=16384]
     ```
-    ]
 
  * The model needs a fortran compiler and compatible netcdf libraries
     * With Linux on IUEM computers:
@@ -76,9 +75,7 @@ SOURCE=~/ModNum/croco/OCEAN
  * Run the model:
    ```
    ./croco croco.in
-   [or
-   $ ./croco croc.in &> basin.out
-  ]
+   [or ./croco croc.in &> basin.out]
    ``` 
  * Look at the output:
    ```
