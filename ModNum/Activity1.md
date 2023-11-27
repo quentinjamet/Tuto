@@ -54,7 +54,10 @@ SOURCE=~/ModNum/croco/OCEAN
 #undef REGIONAL
 ```
 
- * Compile the code: ```./jobcomp```
+ * Compile the code:
+   ```
+   ./jobcomp
+   ```
 
 **Run the model**
 
