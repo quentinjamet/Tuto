@@ -10,8 +10,7 @@ Credits: Jonathan Gula (jonathan.gula@univ-brest.fr)
     ```
 
   * You should see the following files (using ```ls ./croco/```), and the source code (i.e. the FORTRAN files ```*.F```) will be in the folder ```./croco/OCEAN/```
-    
-![Alt text](https://github.com/quentinjamet/Tuto/blob/main/Figure/CROCO_content.png "a title")
+    ![Alt text](https://github.com/quentinjamet/Tuto/blob/main/Figure/CROCO_content.png "a title")
 
   * Create a folder where you will run the model
     ```
@@ -85,5 +84,12 @@ See https://croco-ocean.gitlabpages.inria.fr/croco_doc/tutos/tutos.08.run.html
     * outputs of variables averaged over 5 years
       
  * Note that you also need to modify the ```cppdefs.h``` to output averaged files:
-![Alt text](https://github.com/quentinjamet/Tuto/blob/main/Figure/Basin_averages.png "a title")
+   ![Alt text](https://github.com/quentinjamet/Tuto/blob/main/Figure/Basin_averages.png "a title")
+
+**Run the model using openMP**
+ * We need to edit the file ```cppdefs.h```
+ * Find the part of the file where the BASIN case is defined ( ```#elif defined BASIN``` )
+   and change ```# undef OPENMP``` into ```# define OPENMP```
+ * Edit ```param.h``` to choose the number of processors (NPP) you want to use
+   ![Alt text](https://github.com/quentinjamet/Tuto/blob/main/Figure/Basin_averages.png "a title")
 
