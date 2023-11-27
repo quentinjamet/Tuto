@@ -15,7 +15,7 @@ Credits: Jonathan Gula (jonathan.gula@univ-brest.fr)
       * Modify the ```croco.in``` (you can take this one https://www.jgula.fr/ModNum/croco.in.Basin)
       * Re-compile and rerun the simulation
 
-  * <u>QUESTIONS</u>:
+  * <ins>**QUESTIONS**</ins>:
       * Using your preferred language (python , matlab, julia, etc.) plot together the different terms of the barotropic vorticity budget averaged over the last 5 years of the simulation for the BASIN test case from Activity 1 [available in the ```basin_diags_vrt_avg.nc file```].
       * What is the first order balance over the interior of the gyres?
       * What about the western boundary current?
