@@ -29,7 +29,7 @@ Credits: Jonathan Gula (jonathan.gula@univ-brest.fr)
 
  ## Viscous boundary layer (Munk, 1950)
    * Use a weaker drag and no-slip lateral conditions (in the ```croco.in```)
-     ![Alt text](https://github.com/quentinjamet/Tuto/blob/main/Figure/basin_coriolis.png "a title")
+     ![Alt text](https://github.com/quentinjamet/Tuto/blob/main/Figure/bottom_drag.png "a title")
    * Plot the different terms of the barotropic vorticity budget averaged over the last 5 years of the simulation. Compare them with the previous one.
      
 
@@ -42,9 +42,9 @@ Credits: Jonathan Gula (jonathan.gula@univ-brest.fr)
 
  ## Make it more turbulent
    * Decrease the explicit dissipation in the ```croco.in```
-     ![Alt text](https://github.com/quentinjamet/Tuto/blob/main/Figure/basin_coriolis.png "a title")
+     ![Alt text](https://github.com/quentinjamet/Tuto/blob/main/Figure/lateral_dissip.png "a title")
    * Edit the file param.h and increase the number of points:
-     ![Alt text](https://github.com/quentinjamet/Tuto/blob/main/Figure/basin_coriolis.png "a title")
+     ![Alt text](https://github.com/quentinjamet/Tuto/blob/main/Figure/resolution.png "a title")
    * Find the largest possible barotropic and baroclinic time-steps
    * plot the different terms of the barotropic vorticity budget averaged over the last 5 years of the simulation
 
