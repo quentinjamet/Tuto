@@ -1,14 +1,6 @@
 # Activity 1 – Run an idealized ocean gyre 
 Credits: Jonathan Gula (jonathan.gula@univ-brest.fr)
 
----
-header-includes:
-    - \usepackage[most]{tcolorbox}
-    - \definecolor{light-yellow}{rgb}{1, 0.95, 0.7}
-    - \newtcolorbox{myquote}{colback=light-yellow,grow to right by=-10mm,grow to left by=-10mm, boxrule=0pt,boxsep=0pt,breakable}
-    - \newcommand{\todo}[1]{\begin{myquote} \textbf{TODO:} \emph{#1} \end{myquote}}
----
-
 **Install and compile CROCO**
   * Open a terminal (e.g. ```Ctrl+Alt+T```)
   * Create a directory (e.g. ```mkdir ~/ModNum/```) for the project, then go there (e.g. ```cd ~/ModNum/```)
