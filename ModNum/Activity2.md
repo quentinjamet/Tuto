@@ -28,8 +28,23 @@ Credits: Jonathan Gula (jonathan.gula@univ-brest.fr)
     
 
  ## Viscous boundary layer (Munk, 1950)
+   * Use a weaker drag and no-slip lateral conditions (in the ```croco.in```)
+     ![Alt text](https://github.com/quentinjamet/Tuto/blob/main/Figure/basin_coriolis.png "a title")
+   * Plot the different terms of the barotropic vorticity budget averaged over the last 5 years of the simulation. Compare them with the previous one.
+     
 
  ## Non-linear effects
+   * Check the impact of the non-linear terms (advection) by removing advection in the ```cppdefs.h```
+     ```
+     # undef UV_ADV
+     ```
+   * Plot the different terms of the barotropic vorticity budget averaged over the last 5 years of the simulation. Compare them with the previous one.
 
  ## Make it more turbulent
+   * Decrease the explicit dissipation in the ```croco.in```
+     ![Alt text](https://github.com/quentinjamet/Tuto/blob/main/Figure/basin_coriolis.png "a title")
+   * Edit the file param.h and increase the number of points:
+     ![Alt text](https://github.com/quentinjamet/Tuto/blob/main/Figure/basin_coriolis.png "a title")
+   * Find the largest possible barotropic and baroclinic time-steps
+   * plot the different terms of the barotropic vorticity budget averaged over the last 5 years of the simulation
 
