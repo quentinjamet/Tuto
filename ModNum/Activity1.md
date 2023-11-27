@@ -56,4 +56,14 @@ SOURCE=~/ModNum/croco/OCEAN
 
  * Compile the code: ```./jobcomp```
 
+**Run the model**
 
+ * Run the model:
+   ```
+   ./croco croco.in
+   ```
+   
+ * Look at the output:
+   ```
+   ncview basin_his.nc
+   ```
