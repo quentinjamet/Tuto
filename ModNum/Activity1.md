@@ -48,7 +48,7 @@ cp ~/ModNum/croco/TEST_CASES/croco.in.Basin ~/ModNum/case1/croco.in
           ```
  * Go to your case and edit the ```jobcomp``` to specify the location of the source code:
 
-```SOURCE=~/ModNum/croco/OCEAN```
+\todo{SOURCE=~/ModNum/croco/OCEAN}
 
  * edit the ```cppdefs.h``` and choose the predefined test case $\color{red}{Basin}$:
 
