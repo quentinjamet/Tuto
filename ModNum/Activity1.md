@@ -92,4 +92,22 @@ See https://croco-ocean.gitlabpages.inria.fr/croco_doc/tutos/tutos.08.run.html
    and change ```# undef OPENMP``` into ```# define OPENMP```
  * Edit ```param.h``` to choose the number of processors (NPP) you want to use
    ![Alt text](https://github.com/quentinjamet/Tuto/blob/main/Figure/openmp.png "a title")
+ * Recompile the code:
+   ```
+   ./jobcomp
+   ```
+ * Define the number of threads to use for your computer (the number should be the same than NPP
+defined in the ```param.h``` file). Type in your terminal:
+   * in bash:
+     ```
+     export OMP_NUM_THREADS=8
+     ```
+    * in csh/tcsh:
+      ```
+      setenv OMP_NUM_THREADS 8
+      ```
+ * run the model:
+   ```
+   ./croco croco.in
+   ```
 
