@@ -85,6 +85,5 @@ See https://croco-ocean.gitlabpages.inria.fr/croco_doc/tutos/tutos.08.run.html
     * outputs of variables averaged over 5 years
       
  * Note that you also need to modify the ```cppdefs.h``` to output averaged files:
-   ```
-   
-   ```
+![Alt text](https://github.com/quentinjamet/Tuto/blob/main/Figure/Basin_averages.png "a title")
+
