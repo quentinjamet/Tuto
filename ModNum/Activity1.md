@@ -1,7 +1,7 @@
 # Activity 1 – Run an idealized ocean gyre 
 Credits: Jonathan Gula (jonathan.gula@univ-brest.fr)
 
-* **Install and compile CROCO**
+**Install and compile CROCO**
   * Open a terminal (e.g. ```Ctrl+Alt+T```)
   * Create a directory (e.g. ```mkdir ~/ModNum/```) for the project, then go there (e.g. ```cd ~/ModNum/```)
   * ```git clone``` the CROCO code from the official website:
