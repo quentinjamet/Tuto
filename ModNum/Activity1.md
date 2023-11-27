@@ -91,5 +91,5 @@ See https://croco-ocean.gitlabpages.inria.fr/croco_doc/tutos/tutos.08.run.html
  * Find the part of the file where the BASIN case is defined ( ```#elif defined BASIN``` )
    and change ```# undef OPENMP``` into ```# define OPENMP```
  * Edit ```param.h``` to choose the number of processors (NPP) you want to use
-   ![Alt text](https://github.com/quentinjamet/Tuto/blob/main/Figure/Basin_averages.png "a title")
+   ![Alt text](https://github.com/quentinjamet/Tuto/blob/main/Figure/openmp.png "a title")
 
