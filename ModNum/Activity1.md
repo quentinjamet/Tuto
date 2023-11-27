@@ -10,6 +10,7 @@ Credits: Jonathan Gula (jonathan.gula@univ-brest.fr)
     ```
 
   * You should see the following files (using ```ls ./croco/```), and the source code (i.e. the FORTRAN files ```*.F```) will be in the folder ```./croco/OCEAN/```
+
     ![Alt text](https://github.com/quentinjamet/Tuto/blob/main/Figure/CROCO_content.png "a title")
 
   * Create a folder where you will run the model
