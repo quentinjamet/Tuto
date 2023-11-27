@@ -24,3 +24,23 @@ cp ~/ModNum/croco/OCEAN/param.h ~/ModNum/case1/
 cp ~/ModNum/croco/TEST_CASES/croco.in.Basin ~/ModNum/case1/croco.in
 ```
 
+ * The model needs a fortran compiler and compatible netcdf libraries
+    * With Linux on IUEM computers:
+        * First, unload everything: ```module purge```
+        * Then load intel compilers and netcdf library: ```module load intel/12.1 netcdf/c-4.4.1.1-intel12 netcdf/fortran-4.4.4-intel12```
+    * With MacOS:
+        * You need to have gcc and netcdf installed (using homebrew or macports): ```brew install gcc; brew install netcdf```
+        * you may need to edit the jobcomp to specify where to find the netcdf libraries (*nf-config doesn’t work with homebrew version of netcdf-fortran*)
+          
+          ```
+          NETCDFLIB="-L/usr/local/lib -lnetcdf -lnetcdff"
+          NETCDFINC="-I/usr/local/include"
+          #NETCDFLIB=$(nf-config --flibs)
+          #NETCDFINC=-I$(nf-config --includedir)
+          ```
+ * Go to your case and edit the jobcomp to specify the location of the source code:
+
+``FORTRAN
+SOURCE=~/ModNum/croco/OCEAN
+``
+
