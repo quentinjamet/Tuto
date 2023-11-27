@@ -1,7 +1,7 @@
 # Activity 1 – Run an idealized ocean gyre 
 Credits: Jonathan Gula (jonathan.gula@univ-brest.fr)
 
-**Install and compile CROCO**
+## Install CROCO
   * Open a terminal (e.g. ```Ctrl+Alt+T```)
   * Create a directory (e.g. ```mkdir ~/ModNum/```) for the project, then go there (e.g. ```cd ~/ModNum/```)
   * ```git clone``` the CROCO code from the official website:
@@ -13,6 +13,8 @@ Credits: Jonathan Gula (jonathan.gula@univ-brest.fr)
 
     ![Alt text](https://github.com/quentinjamet/Tuto/blob/main/Figure/CROCO_content.png "a title")
 
+## Compile
+  
   * Create a folder where you will run the model
     ```
     mkdir ./case1
@@ -72,7 +74,7 @@ SOURCE=~/ModNum/croco/OCEAN
    ./jobcomp
    ```
 
-**Run the model**
+## Run the model
  * Run the model:
    ```
    ./croco croco.in
@@ -83,7 +85,7 @@ SOURCE=~/ModNum/croco/OCEAN
    ncview basin_his.nc
    ```
 
-**Modify the namelist (croco.in)**
+## Modify the namelist (croco.in)
 See https://croco-ocean.gitlabpages.inria.fr/croco_doc/tutos/tutos.08.run.html
  * Modify the namelist (```croco.in```) to:
     * make the model run for 20 years (you can approximate 1 year = 360 days)
@@ -93,7 +95,7 @@ See https://croco-ocean.gitlabpages.inria.fr/croco_doc/tutos/tutos.08.run.html
  * Note that you also need to modify the ```cppdefs.h``` to output averaged files:
    ![Alt text](https://github.com/quentinjamet/Tuto/blob/main/Figure/Basin_averages.png "a title")
 
-**Run the model using openMP**
+## Run the model using openMP
  * We need to edit the file ```cppdefs.h```
  * Find the part of the file where the BASIN case is defined ( ```#elif defined BASIN``` )
    and change ```# undef OPENMP``` into ```# define OPENMP```
