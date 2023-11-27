@@ -42,6 +42,10 @@ Credits: Jonathan Gula (jonathan.gula@univ-brest.fr)
           ```
           module load intel/12.1 netcdf/c-4.4.1.1-intel12 netcdf/fortran-4.4.4-intel12
           ```
+        * You can verify that modules are loaded with
+          ```
+          module list
+          ```
     * With MacOS:
         * You need to have gcc and netcdf installed (using homebrew or macports):
           ```
