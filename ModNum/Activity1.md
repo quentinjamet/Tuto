@@ -42,5 +42,14 @@ cp ~/ModNum/croco/TEST_CASES/croco.in.Basin ~/ModNum/case1/croco.in
 
 ```SOURCE=~/ModNum/croco/OCEAN```
 
- * edit the ```cppdefs.h``` and choose the predefined test case $\color{red}{Basin}$:
+ * Edit the ```cppdefs.h``` and choose the predefined test case $\color{red}{Basin}$:
+
+```
+#define BASIN
+...
+#undef REGIONAL
+```
+
+ * Compile the code: ```./jobcomp```
+
 
