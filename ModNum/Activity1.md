@@ -38,9 +38,9 @@ cp ~/ModNum/croco/TEST_CASES/croco.in.Basin ~/ModNum/case1/croco.in
           #NETCDFLIB=$(nf-config --flibs)
           #NETCDFINC=-I$(nf-config --includedir)
           ```
- * Go to your case and edit the jobcomp to specify the location of the source code:
+ * Go to your case and edit the ```jobcomp``` to specify the location of the source code:
 
-``python
-print("hello world!")
-``
+```SOURCE=~/ModNum/croco/OCEAN```
+
+ * edit the ```cppdefs.h``` and choose the predefined test case $\color{red}{Basin}$:
 
