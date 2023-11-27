@@ -17,7 +17,6 @@ Credits: Jonathan Gula (jonathan.gula@univ-brest.fr)
 ```mkdir ./case1``` or ```mkdir -p ```~/ModNum/case1```
 
   * We need to edit the following files: ```jobcomp```, ```cppdefs.h```, ```param.h```, ```croco.in``` so copy them into the folder you just created:
-  
 ```
 cp ~/ModNum/croco/OCEAN/jobcomp ~/ModNum/case1/
 cp ~/ModNum/croco/OCEAN/cppdefs.h ~/ModNum/case1/
