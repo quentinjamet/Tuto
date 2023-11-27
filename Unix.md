@@ -16,3 +16,12 @@ where you can find complementary Unix commands.
 
 * **To run croco and print the output into a file**
   * ```$ ./croco croc.in &> basin.out```
+  * Suspend a process and put it in backgraound, use ```ctrl+z``` then ```bg```
+  * Get the PID of a running process and see on how many cores:
+    ```
+    top
+    ```
+  * Stop a process :
+    ```
+    kill -9 PID
+    ```
