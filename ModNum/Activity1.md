@@ -62,20 +62,29 @@ SOURCE=~/ModNum/croco/OCEAN
 ...
 #undef REGIONAL
 ```
-
  * Compile the code:
    ```
    ./jobcomp
    ```
 
 **Run the model**
-
  * Run the model:
    ```
    ./croco croco.in
-   ```
-   
+   ``` 
  * Look at the output:
    ```
    ncview basin_his.nc
+   ```
+
+**Modify the namelist (croco.in)**
+See https://croco-ocean.gitlabpages.inria.fr/croco_doc/tutos/tutos.08.run.html
+ * Modify the namelist (```croco.in```) to:
+    * make the model run for 20 years (you can approximate 1 year = 360 days)
+    * output of history files every 30 days
+    * outputs of variables averaged over 5 years
+      
+ * Note that you also need to modify the ```cppdefs.h``` to output averaged files:
+   ```
+   
    ```
