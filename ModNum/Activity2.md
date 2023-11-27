@@ -23,6 +23,8 @@ Credits: Jonathan Gula (jonathan.gula@univ-brest.fr)
  ## Westward intensification of gyres (Stommel, 1948)
   * Copy the BASIN test case from Activity 1 and create a new test case: (for example case2)
   * Check what happens if you remove the latitudinal variation of the Coriolis parameter (beta-effect), to test the theory of Stommel. To change the value of beta, you need to copy and edit the file ```ana_grid.F``` :
+    ![Alt text](https://github.com/quentinjamet/Tuto/blob/main/Figure/basin_coriolis.png "a title")
+  * Plot the different terms of the barotropic vorticity budget averaged over the last 5 years of the simulation. Compare them with the previous one.
     
 
  ## Viscous boundary layer (Munk, 1950)
