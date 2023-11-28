@@ -27,7 +27,6 @@ Credits: Jonathan Gula (jonathan.gula@univ-brest.fr)
     cp ~/ModNum/croco/OCEAN/cppdefs.h ~/ModNum/case1/
     cp ~/ModNum/croco/OCEAN/param.h ~/ModNum/case1/
     cp ~/ModNum/croco/TEST_CASES/croco.in.Basin ~/ModNum/case1/croco.in
-    [cp ~/ModNum/croco/OCEAN/partit.F ~/ModNum/case1/]
     ```
 
  * The model needs a fortran compiler and compatible netcdf libraries
