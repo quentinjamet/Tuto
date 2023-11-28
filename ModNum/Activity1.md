@@ -77,7 +77,7 @@ SOURCE=~/ModNum/croco/OCEAN
  * Run the model:
    ```
    ./croco croco.in
-   [or ./croco croc.in &> basin.out]
+   [or ./croco croco.in &> basin.out &]
    ``` 
  * Look at the output:
    ```
