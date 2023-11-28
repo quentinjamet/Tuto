@@ -13,6 +13,7 @@ where you can find complementary Unix commands.
   * ```mkdir```: make new directory
   * ```grep```: search for patterns in text files
   * ```history```: show history of previous commands
+  * ```env | grep SHELL```: know with SHELL you use
 
 * **To run croco and print the output into a file**
   * ```$ ./croco croc.in &> basin.out```
