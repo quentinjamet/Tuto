@@ -11,7 +11,7 @@ where you can find complementary Unix commands.
   * ```rm```: remove files (rm -rf for directories and forcing)
   * ```mv```: rename or move files and directories to another location
   * ```mkdir```: make new directory
-  * ```grep```: search for patterns in text files
+  * ```grep```: search for patterns in text files (with ```-i``` option to confond upper and lower case letters) (ex: ```grep -i tOtO ./*```)
   * ```history```: show history of previous commands
   * ```env | grep SHELL```: know with SHELL you use
 
