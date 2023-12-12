@@ -28,7 +28,7 @@ Credits: Jonathan Gula (jonathan.gula@univ-brest.fr)
     
 
  ## Viscous boundary layer (Munk, 1950)
-   * Use a weaker drag and no-slip lateral conditions (in the ```croco.in```)
+   * Use a weaker drag and free-slip lateral conditions (in the ```croco.in```)
      ![Alt text](https://github.com/quentinjamet/Tuto/blob/main/Figure/bottom_drag.png "a title")
    * Plot the different terms of the barotropic vorticity budget averaged over the last 5 years of the simulation. Compare them with the previous one.
      
