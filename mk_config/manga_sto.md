@@ -2,9 +2,9 @@
 
 ![Alt text](https://github.com/quentinjamet/Tuto/blob/main/Figure/comp_domain_MANGA_CMEMS-IBI.png "a title")
 
-## install CROCO (from my gitlab repo to follow developements)
+## install CROCO
 
-  * (with ssh) 
+  * (with ssh) requires an access to inria gitlab 
   ```
-  git clone git@gitlab.inria.fr:qjamet/croco.git
+  git clone git@gitlab.inria.fr:croco-ocean/croco.git
   ```
