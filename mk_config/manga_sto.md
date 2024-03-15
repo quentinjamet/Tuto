@@ -6,9 +6,9 @@ This tuto provides the different steps to setup a CROCO config (here MANGA) on D
 
 ## Install CROCO
 
-  * Git clone (using ssh) the last stable release CROCO projet from the Gitlab of Inria: 
+  * Git clone the last stable release CROCO projet from the Gitlab of Inria: 
   ```
-  git clone  git@gitlab.inria.fr:croco-ocean/croco.git
+  git clone https://gitlab.inria.fr/croco-ocean/croco.git 
   ```
 
   * For developments, at some point you will need an Inria gitlab access to contribute to the projet ...  
