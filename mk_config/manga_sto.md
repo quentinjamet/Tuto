@@ -5,16 +5,20 @@
 This tuto provides the different steps to setup a CROCO config (here MANGA) on Datarmor. Some adjustments are required for other HPC centers.
 
 ## Install CROCO
+Install CROCO on your ```$WORKDIR``` through:
 
   * Git clone the last stable release CROCO projet from the Gitlab of Inria: 
   ```
+  cd ${WORKDIR}
+  mkdir CROCO
+  cd ./CROCO/
   git clone https://gitlab.inria.fr/croco-ocean/croco.git 
   ```
 
   * For developments, at some point you will need an Inria gitlab access to contribute to the projet ...  
 
 ## Make the config
-  * adjust and run ```create_config.bash```
+  * adjust (e.g. ```MY_CONFIG_NAME```) and run ```create_config.bash```
 
 ## Update the following of files:
   * ```jobcomp```: update source, compilation and run directory (chnage gfortran to ifort? if done, need to source ifort bashrc from Xavier (/home2/datawork/qjamet/test/bashrc.intel))
