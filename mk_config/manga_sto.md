@@ -4,7 +4,7 @@
 
 Provides the different steps to setup a CROCO config (here MANGA) on Datarmor. Some adjustments are required for other HPC centers.
 
-The (gitlab) CROCO documentation is [here][https://croco-ocean.gitlabpages.inria.fr/croco_doc/tutos/tutos.01.download.croco.html], but some other infos can also be found [there][https://www.croco-ocean.org/].
+The (gitlab) CROCO documentation is here (https://croco-ocean.gitlabpages.inria.fr/croco_doc/tutos/tutos.01.download.croco.html), but some other infos can also be found there (https://www.croco-ocean.org/).
 
 The practice I follow:
   * install and compile CROCO on ```$DATAWORK/CROCO_Shom/```
