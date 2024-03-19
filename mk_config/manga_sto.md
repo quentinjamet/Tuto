@@ -7,53 +7,94 @@ Provides the different steps to setup a CROCO config (here MANGA) on Datarmor. S
 The (gitlab) CROCO documentation is here (https://croco-ocean.gitlabpages.inria.fr/croco_doc/tutos/tutos.01.download.croco.html), but some other infos can also be found there (https://www.croco-ocean.org/).
 
 The practice I follow:
-  * install and compile CROCO on ```$DATAWORK/CROCO_Shom/```
-  * download CMEMES/Meteo France products on ```$SCRATCH```, then move generated forcing files on ```$DATAWORK/CROCO_Shom/data_in/``` (require some free space -- 1TB availalbe ...)
-  * run CROCO on ```$SCRATCH``` and move outputs on ```$DATAWORK/CROCO_Shom/RUNS/```
+  * install and compile CROCO on ```$DATAWORK/CROCO/```
+  * download CMEMES/Meteo France products on ```$SCRATCH```, then move generated forcing files on ```$DATAWORK/CROCO/data_in/``` (require some free space -- 1TB availalbe ...)
+  * run CROCO on ```$SCRATCH``` and move outputs on ```$DATAWORK/CROCO/runs/```
 
 ## Install CROCO
 
-  * Git clone (on your ```$DATAWORK/CROCO_Shom/```) the last stable release CROCO projet from the Gitlab of Inria: 
+  * Git clone CROCO projet from the Gitlab of Inria (assuming you have an Inria GitLab account and you have setup ssh keys ; see https://docs.gitlab.com/16.8/ee/user/ssh.html): 
   ```
   cd $DATAWORK
   mkdir CROCO_Shom
   cd ./CROCO_Shom/
-  git clone https://gitlab.inria.fr/croco-ocean/croco.git 
+  git clone git@gitlab.inria.fr:croco-ocean/croco.git
   ```
 
   * In case the clone does not work on frontal, first log on a ftp node
   ```
   qsub -I -q ftp -l mem=32GB -l walltime=06:00:00
   ```
-  then clone the project
+  then clone the project.
 
-  * For developments, you will need an Inria gitlab access to contribute to the projet, and you should clone the project using ssh instead ()
+  * In case you do not have an gitlab account, use https protocol instead:
   ```
-  git clone git@gitlab.inria.fr:croco-ocean/croco.git
+  git clone https://gitlab.inria.fr/croco-ocean/croco.git
+  ```
+
+  * Creat a local branch for your configuration
+  ```
+  git checkout -b my_branch
   ```
 
 ## Create the config tree
-  * adjust and run ```create_config.bash```
+  * Adjust and run ```create_config.bash```, in particular ```MY_CONFIG_NAME```
+  * Then move to the configuration directory ```cd ./your_config_name/```
 
-## Compile the code
-Need to update the following files:
+## Compile the code (with ```gfortran```)
 
-  * ```jobcomp```: 
-	* change ```FC=gfortran``` to ```FC=ifort```, and source additional librairies ```source /home2/datawork/qjamet/bashrc.intel```
+This can be done on several nodes using PBS with the script ```Compile.pbs```:
+  ```
+  cp /home2/datawork/qjamet/CROCO/croco/SCRIPTS/Compile.pbs .
+  cp /home2/datawork/qjamet/CROCO/croco/SCRIPTS/croco_env_qj.sh .
+  ```
+where ```croco_env_qj.sh``` is used to load proper modules and librairies.
 
-  * ```cppdef.h```: 
-	* define a CPP key ```MANGA``` in ```ifdef REGIONAL```
+Before submitting it, few adjustments are required. First, add 16 nodes to the make command at the very end of ```jobcomp```:
+  ```
+  $MAKE -j 16
+  ```
+
+Then, with ```gfortran``` there is an arithmetic overflow (i.e. memory issue) which needs to be fixed. This is done by setting the ```max_buff_size``` in ```partit.F``` to an older value, i.e.:
+  ```
+  cp ../OCEAN/partit.F .
+  sed -i 's/3000\*2000\*100/16384/g' partit.F
+  ```
+
+(The other option is to use ```ifort``` instead (```FC=ifort``` in ```jobcomp```), and here are the proper modules and librairies: ```source /home2/datawork/qjamet/bashrc.intel```)
+
+Then, adjust ```cppdef.h``` with the following changes: 
+	* define a CPP key ```YOUR_CONF_NAME``` in ```ifdef REGIONAL```
+	* ```# define  MPI```
 	* ```# define USE_CALENDAR```
 	* ```# define NC4PAR```
 	* ```# define NO_LAND``` -> deal with dry MPI proc (see ./croco/MPI_NOLAND for details)
 	* ```# define WET_DRY``` -> deal with drying grid cell with tides/high pressure
 	* ```# undef LMD_MIXING```
-	* ```# define  GLS_MIXING``` -> change vertical mixing scheme from KPP to GLS
+	* ```# define  GLS_MIXING``` -> change vertical mixing scheme from KPP to GLS, and add
+  ```
+  # ifdef GLS_MIXING
+  #   define GLS_GEN
+  # endif
+  ```
 	* ```# define PSOURCE``` -> deal with river runoff 
 
-  * ```param.h```: define the size of your domain 
+  * ```param.h```: define the size of your domain
+  ```
+  ...
+  #elif defined REGIONAL
+  # if defined  BENGUELA_LR
+      parameter (LLm0=41,   MMm0=42,   N=32)   ! BENGUELA_LR
+  # elif defined  YOUR_CONF_NAME
+      parameter (LLm0=798,   MMm0=739,   N=75)   ! YOUR_CONF_NAME
+  ...
+  ``` 
 
-Then compile the code:  ```./jobcomp```
+To submit ```Compile.pbs``` to the PBS job scheduler:
+  ```
+  qsub Compile.pbs
+  ```
+and use ```qstat -u your_login``` to follow the job status.
 
 
 ## Prepare bathy, initial, obcs and foprcing files 
