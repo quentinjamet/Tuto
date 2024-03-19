@@ -63,8 +63,8 @@ Then, with ```gfortran``` there is an arithmetic overflow (i.e. memory issue) wh
 
 (The other option is to use ```ifort``` instead (```FC=ifort``` in ```jobcomp```), and here are the proper modules and librairies: ```source /home2/datawork/qjamet/bashrc.intel```)
 
-Then, adjust:
-  * ```cppdef.h``` with the following changes: 
+Then, adjust the followin files:
+  * ```cppdef.h```: 
 	* define a CPP key ```YOUR_CONF_NAME``` in ```ifdef REGIONAL```
 	* ```# define  MPI```
 	* ```# define USE_CALENDAR```
@@ -73,11 +73,11 @@ Then, adjust:
 	* ```# define WET_DRY``` -> deal with drying grid cell with tides/high pressure
 	* ```# undef LMD_MIXING```
 	* ```# define  GLS_MIXING``` -> change vertical mixing scheme from KPP to GLS, and add
-  ```
-  # ifdef GLS_MIXING
-  #   define GLS_GEN
-  # endif
-  ```
+	```
+	# ifdef GLS_MIXING
+	#   define GLS_GEN
+	# endif
+	```
 	* ```# define PSOURCE``` -> deal with river runoff 
 
   * ```param.h```: define the size of your domain
