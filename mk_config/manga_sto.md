@@ -81,15 +81,15 @@ Then, adjust the followin files:
 	* ```# define PSOURCE``` -> deal with river runoff 
 
   * ```param.h```: define the size of your domain
-  ```
-  ...
-  #elif defined REGIONAL
-  # if defined  BENGUELA_LR
-      parameter (LLm0=41,   MMm0=42,   N=32)   ! BENGUELA_LR
-  # elif defined  YOUR_CONF_NAME
-      parameter (LLm0=798,   MMm0=739,   N=75)   ! YOUR_CONF_NAME
-  ...
-  ``` 
+	```
+	...
+	#elif defined REGIONAL
+	# if defined  BENGUELA_LR
+	    parameter (LLm0=41,   MMm0=42,   N=32)   ! BENGUELA_LR
+	# elif defined  YOUR_CONF_NAME
+	    parameter (LLm0=798,   MMm0=739,   N=75)   ! YOUR_CONF_NAME
+	...
+	``` 
 
 To submit ```Compile.pbs``` to the PBS job scheduler:
   ```
