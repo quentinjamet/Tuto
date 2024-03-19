@@ -16,8 +16,8 @@ The practice I follow:
   * Git clone CROCO projet from the Gitlab of Inria (assuming you have an Inria GitLab account and you have setup ssh keys ; see https://docs.gitlab.com/16.8/ee/user/ssh.html): 
   ```
   cd $DATAWORK
-  mkdir CROCO_Shom
-  cd ./CROCO_Shom/
+  mkdir CROCO
+  cd ./CROCO/
   git clone git@gitlab.inria.fr:croco-ocean/croco.git
   ```
 
@@ -63,7 +63,8 @@ Then, with ```gfortran``` there is an arithmetic overflow (i.e. memory issue) wh
 
 (The other option is to use ```ifort``` instead (```FC=ifort``` in ```jobcomp```), and here are the proper modules and librairies: ```source /home2/datawork/qjamet/bashrc.intel```)
 
-Then, adjust ```cppdef.h``` with the following changes: 
+Then, adjust:
+  * ```cppdef.h``` with the following changes: 
 	* define a CPP key ```YOUR_CONF_NAME``` in ```ifdef REGIONAL```
 	* ```# define  MPI```
 	* ```# define USE_CALENDAR```
