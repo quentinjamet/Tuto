@@ -57,13 +57,13 @@ Before submitting it, few adjustments are required. First, add 16 nodes to the m
 
 With ```gfortran``` (default compiler in ```jobcomp```) there is an arithmetic overflow (i.e. memory issue) associated with ```max_buff_size``` in ```partit.F```. This file (in collaboration with ```ncjoin.F```) is used to split large input files into smaller files following the MPI decomposition. In recent version of CROCO the CPP key ```NC4PAR``` also deals with this issue, such that we will not rely on ```partit.F```. An easy fix is then to  set ```max_buff_size``` to an older value, i.e.:
   ```
-  cp ../OCEAN/partit.F .
+  cp ${DATAWORK}/CROCO/croco/OCEAN/partit.F .
   sed -i 's/3000\*2000\*100/16384/g' partit.F
   ```
 
 (The other option is to use ```ifort``` instead (```FC=ifort``` in ```jobcomp```), and here are the proper modules and librairies: ```source /home2/datawork/qjamet/bashrc.intel```)
 
-Then, adjust the followin files:
+Then, adjust the following files:
   * ```cppdef.h```: 
 	* in basic options, replace ```BENGUELA_LR``` by ```YOUR_CONF_NAME``` 
 	* ```# define  MPI```
