@@ -45,8 +45,8 @@ The practice I follow:
 
 This can be done on several nodes using PBS with the script ```Compile.pbs```:
   ```
-  cp /home2/datawork/qjamet/CROCO/croco/SCRIPTS/Compile.pbs .
-  cp /home2/datawork/qjamet/CROCO/croco/SCRIPTS/croco_env_qj.sh .
+  cp ${DATAWORK}/CROCO/croco/SCRIPTS/Compile.pbs .
+  ln -sf ${DATAWORK}/CROCO/croco/SCRIPTS/croco_env_qj.sh .
   ```
 where ```croco_env_qj.sh``` is used to load proper modules and librairies.
 
@@ -55,7 +55,7 @@ Before submitting it, few adjustments are required. First, add 16 nodes to the m
   $MAKE -j 16
   ```
 
-Then, with ```gfortran``` there is an arithmetic overflow (i.e. memory issue) which needs to be fixed. This is done by setting the ```max_buff_size``` in ```partit.F``` to an older value, i.e.:
+With ```gfortran``` (default compiler in ```jobcomp```) there is an arithmetic overflow (i.e. memory issue) associated with ```max_buff_size``` in ```partit.F```. This file (in collaboration with ```ncjoin.F```) is used to split large input files into smaller files following the MPI decomposition. In recent version of CROCO the CPP key ```NC4PAR``` also deals with this issue, such that we will not rely on ```partit.F```. An easy fix is then to  set ```max_buff_size``` to an older value, i.e.:
   ```
   cp ../OCEAN/partit.F .
   sed -i 's/3000\*2000\*100/16384/g' partit.F
@@ -65,19 +65,14 @@ Then, with ```gfortran``` there is an arithmetic overflow (i.e. memory issue) wh
 
 Then, adjust the followin files:
   * ```cppdef.h```: 
-	* define a CPP key ```YOUR_CONF_NAME``` in ```ifdef REGIONAL```
+	* in basic options, replace ```BENGUELA_LR``` by ```YOUR_CONF_NAME``` 
 	* ```# define  MPI```
 	* ```# define USE_CALENDAR```
 	* ```# define NC4PAR```
-	* ```# define NO_LAND``` -> deal with dry MPI proc (see ./croco/MPI_NOLAND for details)
+	* ```# define MPI_NOLAND``` -> deal with dry MPI proc (see ./croco/MPI_NOLAND for details)
 	* ```# define WET_DRY``` -> deal with drying grid cell with tides/high pressure
 	* ```# undef LMD_MIXING```
-	* ```# define  GLS_MIXING``` -> change vertical mixing scheme from KPP to GLS, and add
-	```
-	# ifdef GLS_MIXING
-	#   define GLS_GEN
-	# endif
-	```
+	* ```# define  GLS_MIXING``` -> change vertical mixing scheme from KPP to GLS-KEPSILON
 	* ```# define PSOURCE``` -> deal with river runoff 
 
   * ```param.h```: define the size of your domain
@@ -87,7 +82,7 @@ Then, adjust the followin files:
 	# if defined  BENGUELA_LR
 	    parameter (LLm0=41,   MMm0=42,   N=32)   ! BENGUELA_LR
 	# elif defined  YOUR_CONF_NAME
-	    parameter (LLm0=798,   MMm0=739,   N=75)   ! YOUR_CONF_NAME
+	    parameter (LLm0=xxx,   MMm0=xxx,   N=xxx)   ! YOUR_CONF_NAME
 	...
 	``` 
 
