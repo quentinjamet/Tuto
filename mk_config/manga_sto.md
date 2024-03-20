@@ -90,11 +90,64 @@ To submit ```Compile.pbs``` to the PBS job scheduler:
   ```
   qsub Compile.pbs
   ```
-and use ```qstat -u your_login``` to follow the job status.
+and use ```qstat -u your_login``` to follow the job status. If the code compiled succesfully, you should have ```croco``` executable in your current directory. If this is not the case, errors will be reported in ```COMPILE.oXXXXXXX```.
 
 
-## Prepare bathy, initial, obcs and foprcing files 
-For this, best option is to use Mathieur Le Corre's python scripts (here on datarmor: home2/datawork/qjamet/Python_tools_export/). Then use these different scripts (ctivate conda env before ```conda activate crocoenv```):
+
+
+## Prepare bathy, initial, obcs and foprcing files
+ 
+The best option is to use Mathieur Le Corre python scripts. Make a local copy in your work dir:
+  ```
+  cd ${DATAWORK}
+  cp -r /home2/datawork/qjamet/Python_tools_export/ .
+  ```
+The instructions in ```README.INSTALL``` are not up-to-date, especially on the use of conda on datarmor (see: https://domicile.ifremer.fr/intraric/Mon-informatique/Calcul-et-donnees-scientifiques/Datarmor-Calcul-et-Donnees/Datarmor-calcul-et-programmes/Pour-aller-plus-loin/,DanaInfo=w3z.ifremer.fr,SSL+Conda-sur-Datarmor). To use the latest version of conda, run (or add in your ```~/.bashrc```)
+  ```
+  . /appli/anaconda/latest/etc/profile.d/conda.sh
+  ```
+and update your ```~/.condarc``` as:
+  ```
+  envs_dirs:
+    - $DATAWORK/conda-env
+    - /appli/conda-env
+    - /appli/conda-env/2.7
+    - /appli/conda-env/3.6
+  pkgs_dirs:
+    - $DATAWORK/conda/pkgs
+  ```
+(Other versioni of conda are available here: ```/appli/anaconda/version/```).
+
+Creating the python environmemnt will take time and it is safer to run on a dedicated ftp node:
+  ```
+  qsub -I -q ftp -l walltime=02:59:00 -l mem=32G
+  ```
+
+Switch from ```csh``` (default SHELL on datarmor) to ```bash```
+  ```
+  bash
+  ```
+and source the following file (assuming you are still on ${DATAWORK}/Python_tools_export/):
+  ```
+  source basrc.datarmor
+  ```
+Then, create the conda environment with
+  ```
+  conda env create -f requirements.yaml
+  ```
+and activate it
+  ```
+  conda activate crocoenv
+  ```
+(you can verify it is correctly installed with ```conda info --envs```).
+
+
+
+## TO BE CHECKED 
+
+
+
+Then use these different scripts, always using ```python3.9```:
 
   * ```make_grid.py```: 
 	* to generate bathy file
