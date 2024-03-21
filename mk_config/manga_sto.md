@@ -93,16 +93,13 @@ To submit ```Compile.pbs``` to the PBS job scheduler:
 and use ```qstat -u your_login``` to follow the job status. If the code compiled succesfully, you should have ```croco``` executable in your current directory. If this is not the case, errors will be reported in ```COMPILE.oXXXXXXX```.
 
 
-
-
-## Prepare bathy, initial, obcs and foprcing files
- 
-The best option is to use Mathieur Le Corre python scripts. Make a local copy in your work dir:
+## Install python croco tools
+Mathieu Le Corre developped python tools to generate bathymetry, initial conditions and obcs and surface forcing files. To use them, first make a copy to your workdir:
   ```
   cd ${DATAWORK}
   cp -r /home2/datawork/qjamet/Python_tools_export/ .
   ```
-The instructions in ```README.INSTALL``` are not up-to-date, especially on the use of conda on datarmor (see: https://domicile.ifremer.fr/intraric/Mon-informatique/Calcul-et-donnees-scientifiques/Datarmor-Calcul-et-Donnees/Datarmor-calcul-et-programmes/Pour-aller-plus-loin/,DanaInfo=w3z.ifremer.fr,SSL+Conda-sur-Datarmor). To use the latest version of conda, run (or add in your ```~/.bashrc```)
+The instructions in ```README.INSTALL``` are not up-to-date, especially on the use of conda on datarmor (see: https://domicile.ifremer.fr/intraric/Mon-informatique/Calcul-et-donnees-scientifiques/Datarmor-Calcul-et-Donnees/Datarmor-calcul-et-programmes/Pour-aller-plus-loin/,DanaInfo=w3z.ifremer.fr,SSL+Conda-sur-Datarmor). To use the latest version of conda, run (or even better, add in your ```~/.bashrc``` and source it)
   ```
   . /appli/anaconda/latest/etc/profile.d/conda.sh
   ```
@@ -116,9 +113,9 @@ and update your ```~/.condarc``` as:
   pkgs_dirs:
     - $DATAWORK/conda/pkgs
   ```
-(Other versioni of conda are available here: ```/appli/anaconda/version/```).
+(Other versions of conda are available here: ```/appli/anaconda/version/```).
 
-Creating the python environmemnt will take time and it is safer to run on a dedicated ftp node:
+Creating the python environmemnt will some take time (~1h) and it is safer to run on a dedicated ftp node:
   ```
   qsub -I -q ftp -l walltime=02:59:00 -l mem=32G
   ```
@@ -127,31 +124,44 @@ Switch from ```csh``` (default SHELL on datarmor) to ```bash```
   ```
   bash
   ```
-and source the following file (assuming you are still on ${DATAWORK}/Python_tools_export/):
+and source the following file (assuming you are on ```${DATAWORK}/Python_tools_export/```):
   ```
-  source basrc.datarmor
+  source bashrc.datarmor
   ```
-Then, create the conda environment with
+Then, create the conda environment
   ```
   conda env create -f requirements.yaml
   ```
-and activate it
+(If correctly installed, you should see it with ```conda info --envs```).
+
+
+## Prepare bathy, initial, obcs and foprcing files
+In case you run away at the end of the previous section and start again from a fresh shell (and mind), first things first:
   ```
-  conda activate crocoenv
+  cd ${DATAWORK}/Python_tools_export/
+  . /appli/anaconda/latest/etc/profile.d/conda.sh (if not included in your .bashrc)
+  source bashrc.datarmor
   ```
-(you can verify it is correctly installed with ```conda info --envs```).
+Then you should be fine for next steps ...
 
-
-
-## TO BE CHECKED 
-
-
-
-Then use these different scripts, always using ```python3.9```:
+As there names indicate (or not), ```make_*.py``` are used to generate grid, initial conditions, and forcing files (atm, obcs, tides, runoff). We will them follow step by step (always use ```python3.9```):
 
   * ```make_grid.py```: 
-	* to generate bathy file
-	* ```python3.9 make_grid.py```
+	* generate bathy file
+	* launch it  
+	```
+	python3.9 make_grid.py
+	```
+	* and follow the instructions (configure grid, apply smoothing and save)
+	* Note that following CROCO standards, the *_rho points will be +2 grid points numbers (+1 at each side), and the *_u, *_v and *_psi will be +1 grid point numbers (+1 and east/north side). Bellow is an illustration:
+
+![Alt text](https://github.com/quentinjamet/Tuto/blob/main/Figure/grid_croco_stag_points.png "a title")
+
+
+
+
+
+## WHERE I AM 
   * ```download_glorys_data_copernicus_cli.sh```: 
 	* to get CMEMS-GLORYS product
 	* But first, install CMEMS API (see https://marine.copernicus.eu/news/access-data-opendap-erddap-api).
