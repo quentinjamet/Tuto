@@ -10,12 +10,15 @@ The (gitlab) CROCO documentation is here (https://croco-ocean.gitlabpages.inria.
 
 The practice I follow:
   * install and compile CROCO on ```$DATAWORK/CROCO/``` with the following tree:
-	* ```./CONFIGS/MY_CONF_NAME/```: where the code is compiled
-	* ```./data_in/```: all model input files
-	* ```./runs/```: model outputs
+	* ```DATAWORK/CROCO/croco/CONFIGS/MY_CONF_NAME/```: where the code is compiled
+	* ```DATAWORK/CROCO/data_in/```: all model input files
+	* ```DATAWORK/CROCO/runs/```: model outputs
   * download CMEMES/Meteo France products and run the model on ```$SCRATCH```, then move generated forcing files in the appropriate storage (i.e. ```$DATAWORK/CROCO/data_in/``` and ```$DATAWORK/CROCO/runs/```, respectively). There might be a question of where to store these large dataset to be addressed at some point, only 1TB available on ```$DATAWORK```.
 
+
+<!--- /////////////////////////////////////////// -->
 ## Install CROCO
+<!--- /////////////////////////////////////////// -->
 
   * Git clone CROCO projet from the Gitlab of Inria (assuming you have an Inria GitLab account and you have setup ssh keys ; see https://docs.gitlab.com/16.8/ee/user/ssh.html): 
   ```
@@ -40,8 +43,12 @@ The practice I follow:
   ```
   git checkout -b my_branch
   ```
+
+
 <!--- /////////////////////////////////////////// -->
 ## Create the config tree
+<!--- /////////////////////////////////////////// -->
+
   * Adjust and run ```create_config.bash```, in particular ```MY_CONFIG_NAME```
   * Creat other directories:
   ```
@@ -50,7 +57,14 @@ The practice I follow:
   mkdir -p data_in/atm  data_in/grd  data_in/ini  data_in/obcs  data_in/runoff  data_in/tide
   ```
 
+
+
+
+
+<!--- /////////////////////////////////////////// -->
 ## Compile the code (with ```gfortran```)
+<!--- /////////////////////////////////////////// -->
+
 Move to your configuration directory 
   ```
   cd ./your_config_name/
@@ -108,10 +122,10 @@ and use ```qstat -u your_login``` to follow the job status. If the code compiled
 
 
 
-
-
-
+<!--- /////////////////////////////////////////// -->
 ## Install python croco tools
+<!--- /////////////////////////////////////////// -->
+
 Mathieu Le Corre developped python tools to generate bathymetry, initial conditions and obcs and surface forcing files. To use them, first make a copy to your workdir:
   ```
   cd ${DATAWORK}
@@ -155,24 +169,26 @@ Then, create the conda environment
 
 
 
-
-
-
+<!--- /////////////////////////////////////////// -->
 ## Install Copernicus API
-This will be done by creating an additional conda env, but (I think) there is no sensitivity to loaded modules. Get the copernicus *.yml* file from here ```/home2/datawork/qjamet/Python_tools_export/copernicusmarine_env.yml``` (or from here: https://help.marine.copernicus.eu/en/articles/7970514-copernicus-marine-toolbox-installation), and make the environement:
+<!--- /////////////////////////////////////////// -->
+
+This will be done by creating an additional conda env, but (I think) there is no sensitivity to loaded modules. It is also much faster than for ```crocoenv``` and can be done directly on the frontal node.
+
+Get the copernicus *.yml* file from here ```/home2/datawork/qjamet/Python_tools_export/copernicusmarine_env.yml``` (or from here: https://help.marine.copernicus.eu/en/articles/7970514-copernicus-marine-toolbox-installation), and create the environement:
   ```
   cd ${DATAWORK}/Python_tools_export/
   cp /home2/datawork/qjamet/Python_tools_export/copernicusmarine_env.yml .
   conda env create -f copernicusmarine_env.yml
-  
   ```
+(If correctly installed, you should see it with ```conda info --envs```).
 
 
 
-
-
-
+<!--- /////////////////////////////////////////// -->
 ## Prepare bathy, initial, obcs and foprcing files
+<!--- /////////////////////////////////////////// -->
+
 In case you run away at the end of the previous section and start again from a fresh shell (and mind), first things first:
   ```
   cd ${DATAWORK}/Python_tools_export/
@@ -201,7 +217,10 @@ As there names indicate (or not), ```make_*.py``` are used to generate grid, ini
 </p>
 
 
+
+<!--- /////////////////////////////////////////// -->
 ## WHERE I AM 
+<!--- /////////////////////////////////////////// -->
   * ```download_glorys_data_copernicus_cli.sh```: 
 	* to get CMEMS-GLORYS product
 	* But first, install CMEMS API (see https://marine.copernicus.eu/news/access-data-opendap-erddap-api).
