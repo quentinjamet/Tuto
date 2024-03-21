@@ -20,7 +20,7 @@ The practice I follow:
 ## Install CROCO
 <!--- /////////////////////////////////////////// -->
 
-  * Git clone CROCO projet from the Gitlab of Inria (assuming you have an Inria GitLab account and you have setup ssh keys ; see https://docs.gitlab.com/16.8/ee/user/ssh.html): 
+  * Git clone CROCO projet from the Gitlab of Inria (assuming you have an Inria GitLab account and you have setup ssh keys ; see https://docs.gitlab.com/16.8/ee/user/ssh.html -- **for devs**): 
   ```
   cd $DATAWORK
   mkdir CROCO
@@ -34,7 +34,7 @@ The practice I follow:
   ```
   then clone the project.
 
-  * In case you do not have an gitlab account, use https protocol instead:
+  * In case you do not have an gitlab account, use https protocol instead (but you will not be able to ```git push``` changes to the project -- **for use-only**):
   ```
   git clone https://gitlab.inria.fr/croco-ocean/croco.git
   ```
