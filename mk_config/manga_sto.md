@@ -155,7 +155,7 @@ As there names indicate (or not), ```make_*.py``` are used to generate grid, ini
 	* and follow the instructions (configure grid, apply smoothing and save)
 	* Note that following CROCO standards, the *_rho points will be +2 grid points numbers (+1 at each side), and the *_u, *_v and *_psi will be +1 grid point numbers (+1 and east/north side). Bellow is an illustration:
 
-![Alt text](https://github.com/quentinjamet/Tuto/blob/main/Figure/grid_croco_stag_points.png "a title")
+-> ![Alt text](https://github.com/quentinjamet/Tuto/blob/main/Figure/grid_croco_stag_points.png "a title") <-
 
 
 
