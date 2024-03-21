@@ -9,10 +9,10 @@ Provides the different steps to setup a CROCO config (here MANGA) on Datarmor. S
 The (gitlab) CROCO documentation is here (https://croco-ocean.gitlabpages.inria.fr/croco_doc/tutos/tutos.01.download.croco.html), but some other infos can also be found there (https://www.croco-ocean.org/).
 
 The practice I follow:
-  * install and compile CROCO on ```$DATAWORK/CROCO/``` with the following tree:
-	* ```DATAWORK/CROCO/croco/CONFIGS/MY_CONF_NAME/```: where the code is compiled
-	* ```DATAWORK/CROCO/data_in/```: all model input files
-	* ```DATAWORK/CROCO/runs/```: model outputs
+  * install and compile CROCO on ```${DATAWORK}/CROCO/``` with the following tree:
+	* ```${DATAWORK}/CROCO/croco/CONFIGS/MY_CONF_NAME/```: where the code is compiled
+	* ```${DATAWORK}/CROCO/data_in/```: all model input files
+	* ```${DATAWORK}/CROCO/runs/```: model outputs
   * download CMEMES/Meteo France products and run the model on ```$SCRATCH```, then move generated forcing files in the appropriate storage (i.e. ```$DATAWORK/CROCO/data_in/``` and ```$DATAWORK/CROCO/runs/```, respectively). There might be a question of where to store these large dataset to be addressed at some point, only 1TB available on ```$DATAWORK```.
 
 
