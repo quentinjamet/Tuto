@@ -1,15 +1,19 @@
 # Manche-Gascogne CROCO config
 
-![Alt text](https://github.com/quentinjamet/Tuto/blob/main/Figure/comp_domain_MANGA_CMEMS-IBI.png "a title")
+<p align="center">
+  <img src="https://github.com/quentinjamet/Tuto/blob/main/Figure/comp_domain_MANGA_CMEMS-IBI.png?raw=true" alt="Sublime's custom image"/>
+</p>
 
 Provides the different steps to setup a CROCO config (here MANGA) on Datarmor. Some adjustments are required for other HPC centers.
 
 The (gitlab) CROCO documentation is here (https://croco-ocean.gitlabpages.inria.fr/croco_doc/tutos/tutos.01.download.croco.html), but some other infos can also be found there (https://www.croco-ocean.org/).
 
 The practice I follow:
-  * install and compile CROCO on ```$DATAWORK/CROCO/```
-  * download CMEMES/Meteo France products on ```$SCRATCH```, then move generated forcing files on ```$DATAWORK/CROCO/data_in/``` (require some free space -- 1TB availalbe ...)
-  * run CROCO on ```$SCRATCH``` and move outputs on ```$DATAWORK/CROCO/runs/```
+  * install and compile CROCO on ```$DATAWORK/CROCO/``` with the following tree:
+	* ```./CONFIGS/MY_CONF_NAME/```: where the code is compiled
+	* ```./data_in/```: all model input files
+	* ```./runs/```: model outputs
+  * download CMEMES/Meteo France products and run the model on ```$SCRATCH```, then move generated forcing files in the appropriate storage (i.e. ```$DATAWORK/CROCO/data_in/``` and ```$DATAWORK/CROCO/runs/```, respectively). There might be a question of where to store these large dataset to be addressed at some point, only 1TB available on ```$DATAWORK```.
 
 ## Install CROCO
 
@@ -36,14 +40,23 @@ The practice I follow:
   ```
   git checkout -b my_branch
   ```
-
+<!--- /////////////////////////////////////////// -->
 ## Create the config tree
   * Adjust and run ```create_config.bash```, in particular ```MY_CONFIG_NAME```
-  * Then move to the configuration directory ```cd ./your_config_name/```
+  * Creat other directories:
+  ```
+  cd ${DATAWORK}/CROCO/
+  mkdir runs 
+  mkdir -p data_in/atm  data_in/grd  data_in/ini  data_in/obcs  data_in/runoff  data_in/tide
+  ```
 
 ## Compile the code (with ```gfortran```)
+Move to your configuration directory 
+  ```
+  cd ./your_config_name/
+  ```
 
-This can be done on several nodes using PBS with the script ```Compile.pbs```:
+To compile on sevseral nodes using PBS, use the script ```Compile.pbs```:
   ```
   cp ${DATAWORK}/CROCO/croco/SCRIPTS/Compile.pbs .
   ln -sf ${DATAWORK}/CROCO/croco/SCRIPTS/croco_env_qj.sh .
@@ -93,6 +106,11 @@ To submit ```Compile.pbs``` to the PBS job scheduler:
 and use ```qstat -u your_login``` to follow the job status. If the code compiled succesfully, you should have ```croco``` executable in your current directory. If this is not the case, errors will be reported in ```COMPILE.oXXXXXXX```.
 
 
+
+
+
+
+
 ## Install python croco tools
 Mathieu Le Corre developped python tools to generate bathymetry, initial conditions and obcs and surface forcing files. To use them, first make a copy to your workdir:
   ```
@@ -135,11 +153,30 @@ Then, create the conda environment
 (If correctly installed, you should see it with ```conda info --envs```).
 
 
+
+
+
+
+
+## Install Copernicus API
+This will be done by creating an additional conda env, but (I think) there is no sensitivity to loaded modules. Get the copernicus *.yml* file from here ```/home2/datawork/qjamet/Python_tools_export/copernicusmarine_env.yml``` (or from here: https://help.marine.copernicus.eu/en/articles/7970514-copernicus-marine-toolbox-installation), and make the environement:
+  ```
+  cd ${DATAWORK}/Python_tools_export/
+  cp /home2/datawork/qjamet/Python_tools_export/copernicusmarine_env.yml .
+  conda env create -f copernicusmarine_env.yml
+  
+  ```
+
+
+
+
+
+
 ## Prepare bathy, initial, obcs and foprcing files
 In case you run away at the end of the previous section and start again from a fresh shell (and mind), first things first:
   ```
   cd ${DATAWORK}/Python_tools_export/
-  . /appli/anaconda/latest/etc/profile.d/conda.sh (if not included in your .bashrc)
+  . /appli/anaconda/latest/etc/profile.d/conda.sh #(if not included in your .bashrc)
   source bashrc.datarmor
   ```
 Then you should be fine for next steps ...
@@ -153,13 +190,15 @@ As there names indicate (or not), ```make_*.py``` are used to generate grid, ini
 	python3.9 make_grid.py
 	```
 	* and follow the instructions (configure grid, apply smoothing and save)
+	* move the grid file to ```data_in```
+	```
+	mv your_grid_name.nc ${DATAWORK}/CROCO/data_in/grd/
+	```
 	* Note that following CROCO standards, the *_rho points will be +2 grid points numbers (+1 at each side), and the *_u, *_v and *_psi will be +1 grid point numbers (+1 and east/north side). Bellow is an illustration:
 
 <p align="center">
   <img src="https://github.com/quentinjamet/Tuto/blob/main/Figure/grid_croco_stag_points.png?raw=true" alt="Sublime's custom image"/>
 </p>
-
-
 
 
 ## WHERE I AM 
