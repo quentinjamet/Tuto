@@ -1,3 +1,3 @@
 # Tuto
 
-Provide some useful tuto and educational numerical activities.
+Provide  some useful tuto and educational numerical activities.
