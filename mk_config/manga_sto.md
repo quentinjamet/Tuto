@@ -217,14 +217,17 @@ As there names indicate (or not), ```make_*.py``` are used to generate grid, ini
 </p>
 
 
-
-<!--- /////////////////////////////////////////// -->
-## WHERE I AM 
-<!--- /////////////////////////////////////////// -->
   * ```download_glorys_data_copernicus_cli.sh```: 
 	* to get CMEMS-GLORYS product
 	* But first, install CMEMS API (see https://marine.copernicus.eu/news/access-data-opendap-erddap-api).
 	* update the dates and region or provide bathy file ```INPUT_GRD```
+
+
+
+
+<!--- /////////////////////////////////////////// -->
+## WHERE I AM 
+<!--- /////////////////////////////////////////// -->
   * ```make_ini.py```:
 	* update ```Yini,Mini,Dini```
 	* update ```sigma_params``` -> deals with vertical mesh, will be used to define obcs files. Should provide these variables also in ```make_bry.py``` and in ```croco.in``` to define S-coordinates.
