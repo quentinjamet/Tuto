@@ -170,7 +170,7 @@ Then, create the conda environment
 
 
 <!--- /////////////////////////////////////////// -->
-## Install Copernicus API
+## Install Copernicus API and download necessary data
 <!--- /////////////////////////////////////////// -->
 
 This will be done by creating an additional conda env, but (I think) there is no sensitivity to loaded modules. It is also much faster than for ```crocoenv``` and can be done directly on the frontal node.
@@ -181,7 +181,23 @@ Get the copernicus *.yml* file from here ```/home2/datawork/qjamet/Python_tools_
   cp /home2/datawork/qjamet/Python_tools_export/copernicusmarine_env.yml .
   conda env create -f copernicusmarine_env.yml
   ```
-(If correctly installed, you should see it with ```conda info --envs```).
+(If correctly installed, you should see it (````cmt_1.0```) with ```conda info --envs```).
+
+Download necessary data with ```download_glorys_data_copernicus_cli.sh```:
+	* (I had to update ```command_line``` on line 90 to fit what was setup in ```copernicusmarine_env.yml```, i.e. ```"copernicus-marine subset"``` to ```"copernicusmarine subset"```)
+	* (A better option is to first generate the grid (see below), then use it to extract the region of interest)
+	* update the dates, the region of interest (or set ```READ_GRD=1``` and provide bathy file ```INPUT_GRD```), and the location where data will be downloaded (```OUTDIR```)
+	* run it on a ftp node to avoid any troubles:
+	```
+	qsub -I -q ftp -l walltime=02:59:00 -l mem=32G
+	```
+	* (```conda activate mt_1.0; cd ${DATAWORK}/Python_tools_export/$)
+	* uncomment the following lines and provide your Copernicus username and pw:
+		* ```export COPERNICUSMARINE_CACHE_DIRECTORY=/tmp/${USER}```
+		* ```export COPERNICUS_MARINE_SERVICE_USERNAME=xxx```
+		* ```export COPERNICUS_MARINE_SERVICE_PASSWORD=xxx```
+	* ```./download_glorys_data_copernicus_cli.sh```
+	* (in case of troubles: https://help.marine.copernicus.eu/en/articles/8632322-copernicus-marine-toolbox-troubleshoots)
 
 
 
@@ -191,13 +207,15 @@ Get the copernicus *.yml* file from here ```/home2/datawork/qjamet/Python_tools_
 
 In case you run away at the end of the previous section and start again from a fresh shell (and mind), first things first:
   ```
+  qsub -I -q ftp -l walltime=02:59:00 -l mem=32G
   cd ${DATAWORK}/Python_tools_export/
   . /appli/anaconda/latest/etc/profile.d/conda.sh #(if not included in your .bashrc)
   source bashrc.datarmor
+  conda activate crocoenv
   ```
 Then you should be fine for next steps ...
 
-As there names indicate (or not), ```make_*.py``` are used to generate grid, initial conditions, and forcing files (atm, obcs, tides, runoff). We will them follow step by step (always use ```python3.9```):
+As their names indicate (or not), ```make_*.py``` are used to generate grid, initial conditions, and forcing files (atm, obcs, tides, runoff). We will follow them step by step (always use ```python3.9```):
 
   * ```make_grid.py```: 
 	* generate bathy file
@@ -217,25 +235,17 @@ As there names indicate (or not), ```make_*.py``` are used to generate grid, ini
 </p>
 
 
-  * ```download_glorys_data_copernicus_cli.sh```: 
-	* to get CMEMS-GLORYS product
-	* But first, install CMEMS API (see https://marine.copernicus.eu/news/access-data-opendap-erddap-api).
-	* update the dates and region or provide bathy file ```INPUT_GRD```
-
-
-
-
-<!--- /////////////////////////////////////////// -->
-## WHERE I AM 
-<!--- /////////////////////////////////////////// -->
   * ```make_ini.py```:
+	* update ```input_dir```, ``Yini,Mini,Dini``` in agreement with what was provided in ```download_glorys_data_copernicus_cli.sh```
 	* update ```Yini,Mini,Dini```
 	* update ```sigma_params``` -> deals with vertical mesh, will be used to define obcs files. Should provide these variables also in ```make_bry.py``` and in ```croco.in``` to define S-coordinates.
 	* ```python3.9 make_ini.py```
 	* files are generated in ```croco_dir```
+
   * ```make_bry.py```:
 	* define ```croco_dir``` and ```input_dir```
 	* define ```sigma_params```
 	* ```output_file_format``` -> monthy or yearly
+	* ```Yorig``` is in Copernicus input file
 	* starting and ending dates
 	* ```python3.9 make_bry.py```
