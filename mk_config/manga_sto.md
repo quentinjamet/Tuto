@@ -191,7 +191,7 @@ Download necessary data with ```download_glorys_data_copernicus_cli.sh```:
   ```
   qsub -I -q ftp -l walltime=02:59:00 -l mem=32G
   ```
-  * (```conda activate mt_1.0; cd ${DATAWORK}/Python_tools_export/$)
+  * (```conda activate mt_1.0; cd ${DATAWORK}/Python_tools_export/$```)
   * uncomment the following lines and provide your Copernicus username and pw:
 	* ```export COPERNICUSMARINE_CACHE_DIRECTORY=/tmp/${USER}```
 	* ```export COPERNICUS_MARINE_SERVICE_USERNAME=xxx```
