@@ -14,7 +14,13 @@ The practice I follow:
 	* ```${DATAWORK}/CROCO/data_in/```: all model input files
 	* ```${DATAWORK}/CROCO/runs/```: model outputs
   * download CMEMES/Meteo France products and run the model on ```$SCRATCH```, then move generated forcing files in the appropriate storage (i.e. ```$DATAWORK/CROCO/data_in/``` and ```$DATAWORK/CROCO/runs/```, respectively). There might be a question of where to store these large dataset to be addressed at some point, only 1TB available on ```$DATAWORK```.
+  * If needed, force a bash environment with a ```~/.login```:
+  ```
+  if (-x /bin/bash) then
+    exec /bin/bash -l
+  endif
 
+  ```
 
 <!--- /////////////////////////////////////////// -->
 ## Install CROCO
@@ -181,7 +187,7 @@ Get the copernicus *.yml* file from here ```/home2/datawork/qjamet/Python_tools_
   cp /home2/datawork/qjamet/Python_tools_export/copernicusmarine_env.yml .
   conda env create -f copernicusmarine_env.yml
   ```
-(If correctly installed, you should see it (````cmt_1.0```) with ```conda info --envs```).
+(If correctly installed, you should see it (```cmt_1.0```) with ```conda info --envs```).
 
 Download necessary data with ```download_glorys_data_copernicus_cli.sh```:
   * (I had to update ```command_line``` on line 90 to fit what was setup in ```copernicusmarine_env.yml```, i.e. ```"copernicus-marine subset"``` to ```"copernicusmarine subset"```)
@@ -192,10 +198,11 @@ Download necessary data with ```download_glorys_data_copernicus_cli.sh```:
   qsub -I -q ftp -l walltime=02:59:00 -l mem=32G
   ```
   * (```conda activate mt_1.0; cd ${DATAWORK}/Python_tools_export/$```)
-  * uncomment the following lines and provide your Copernicus username and pw:
+  * uncomment (an update with correct export names) the following lines and provide your Copernicus username and pw:
 	* ```export COPERNICUSMARINE_CACHE_DIRECTORY=/tmp/${USER}```
 	* ```export COPERNICUS_MARINE_SERVICE_USERNAME=xxx```
 	* ```export COPERNICUS_MARINE_SERVICE_PASSWORD=xxx```
+  * 09/04/2024: seems that the new version of ```copernicusmarine``` now requires an updqted nimenclature for ID products; check here: https://data.marine.copernicus.eu/product/GLOBAL_MULTIYEAR_PHY_001_030/services.
   * ```./download_glorys_data_copernicus_cli.sh```
   * (in case of troubles: https://help.marine.copernicus.eu/en/articles/8632322-copernicus-marine-toolbox-troubleshoots)
 
