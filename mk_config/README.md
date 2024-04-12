@@ -3,5 +3,3 @@
 ## manga\_sto  
 Manche-Gascogne CROCO configuration.
 
-
-toto
