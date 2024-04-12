@@ -243,7 +243,6 @@ As their names indicate (or not), ```make_*.py``` are used to generate grid, ini
 
   * ```make_ini.py```:
 	* update ```input_dir```, ``Yini,Mini,Dini``` in agreement with what was provided in ```download_glorys_data_copernicus_cli.sh```
-	* update ```Yini,Mini,Dini```
 	* update ```sigma_params``` -> deals with vertical mesh, will be used to define obcs files. Should provide these variables also in ```make_bry.py``` and in ```croco.in``` to define S-coordinates.
 	* ```python3.9 make_ini.py```
 	* files are generated in ```croco_dir```
@@ -258,3 +257,4 @@ As their names indicate (or not), ```make_*.py``` are used to generate grid, ini
 
   * ```make_tides.py```
 	* updated version from Alain Serpette (alain.serpette@shom.fr), using FES2014 tidal dataset, available on DATARMOR at ```/home/shom_simuref/USERS/nducouss/TIDES/FES_2014/```. This has required an update of ```Readers/tides_reader.py``` and ```Modules/tides_class.py``` (included in ```/home2/datawork/qjamet/Python_tools_export/```).
+	* Update ```croco_dir```, ```croco_grd```, ```croco_filename``` and ```Yini,Mini,Dini```
