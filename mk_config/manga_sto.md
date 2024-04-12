@@ -255,3 +255,6 @@ As their names indicate (or not), ```make_*.py``` are used to generate grid, ini
 	* ```Yorig``` is in Copernicus input file
 	* starting and ending dates
 	* ```python3.9 make_bry.py```
+
+  * ```make_tides.py```
+	* updated version from Alain Serpette (alain.serpette@shom.fr), using FES2014 tidal dataset, available on DATARMOR at ```/home/shom_simuref/USERS/nducouss/TIDES/FES_2014/```. This has required an update of ```Readers/tides_reader.py``` and ```Modules/tides_class.py``` (included in ```/home2/datawork/qjamet/Python_tools_export/```).
