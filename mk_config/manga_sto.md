@@ -79,9 +79,9 @@ Move to your configuration directory
 To compile on sevseral nodes using PBS, use the script ```Compile.pbs```:
   ```
   cp ${DATAWORK}/CROCO/croco/SCRIPTS/Compile.pbs .
-  ln -sf ${DATAWORK}/CROCO/croco/SCRIPTS/croco_env_qj.sh .
+  ln -sf ${DATAWORK}/CROCO/croco/SCRIPTS/croco_env_datarmor_gnu_hdf5_netcdf.sh croco_env.sh
   ```
-where ```croco_env_qj.sh``` is used to load proper modules and librairies.
+where ```croco_env.sh``` is used to load proper modules and librairies, in particular NetCDF I/O with parallel capabilities (through CPP key ```NC4PAR```). IMPORTANT: This should be also used at run time to insure identical environment between compiling and running CROCO.
 
 Before submitting it, few adjustments are required. First, add 16 nodes to the make command at the very end of ```jobcomp```:
   ```
@@ -101,11 +101,11 @@ Then, adjust the following files:
 	* in basic options, replace ```BENGUELA_LR``` by ```YOUR_CONF_NAME``` 
 	* ```# define  MPI```
 	* ```# define USE_CALENDAR```
-	* ```# define NC4PAR```
-	* ```# define MPI_NOLAND``` -> deal with dry MPI proc (see ./croco/MPI_NOLAND for details)
-	* ```# define WET_DRY``` -> deal with drying grid cell with tides/high pressure
+	* ```# define NC4PAR```       -> deal with parallel I/O
+	* ```# define MPI_NOLAND```   -> deal with dry MPI proc (see ./croco/MPI_NOLAND for details)
+	* ```# define WET_DRY```      -> deal with drying grid cell with tides/high pressure
 	* ```# undef LMD_MIXING```
-	* ```# define  GLS_MIXING``` -> change vertical mixing scheme from KPP to GLS-KEPSILON
+	* ```# define  GLS_MIXING```  -> change vertical mixing scheme from KPP to GLS-KEPSILON
 	* ```# define PSOURCE``` -> deal with river runoff 
 
   * ```param.h```: define the size of your domain
