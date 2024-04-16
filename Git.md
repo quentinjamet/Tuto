@@ -40,10 +40,7 @@ OR
 
 
 <!--- /////////////// -->
-* **Save (or hide) local changes without commiting them**
-
-very useful to change between branches with ongoing devs
-
+* **Save (or hide) local changes without commiting them**. Very useful to change between branches with ongoing devs
 	* ```git stash```
 	* ```[git stash pop to 'reactivate']```
 	* ```git stash list```
