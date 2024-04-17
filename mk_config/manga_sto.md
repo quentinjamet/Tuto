@@ -21,6 +21,8 @@ The practice I follow:
 
   ```
 
+  * **Note**: A proper tutorial to use croco_pytools will come soon and should be taken as a reference.
+
 <!--- /////////////////////////////////////////// -->
 ## Install CROCO
 <!--- /////////////////////////////////////////// -->
@@ -258,3 +260,18 @@ As their names indicate (or not), ```make_*.py``` are used to generate grid, ini
   * ```make_tides.py```
 	* updated version from Alain Serpette (alain.serpette@shom.fr), using FES2014 tidal dataset, available on DATARMOR at ```/home/shom_simuref/USERS/nducouss/TIDES/FES_2014/```. This has required an update of ```Readers/tides_reader.py``` and ```Modules/tides_class.py``` (included in ```/home2/datawork/qjamet/Python_tools_export/```).
 	* Update ```croco_dir```, ```croco_grd```, ```croco_filename``` and ```Yini,Mini,Dini```
+
+  * ```make_rivers.py```
+	* Daily inter-annual river discharges from  the Global Flood Awareness System (GLOFAS)
+	* Updated version from Mathieu Le Corre (mathieu.le.corre@shom.fr) from ```/home2/datawork/mlecorre/TMP_TEST_TOOLS/croco_pytools/prepro/```
+	* [NOT ANYMORE -- need to copy ```tmp_func.py``` and ```./Rivers_Glofas_Python/```]
+	* ECMWF CDS API is now included in the environment_tools.yml when building the ```croco_pyenv``` (formerly ```crocoenv```) environement. [Install ECMWF CDS API (see ./Rivers_Glofas_Python/README_Rivers_GLOFAS) to download river discharge data (done in ```crocoenv```)
+		```
+		conda activate crocoenv
+		pip install cdsapi
+		```
+	 ]
+	* Need CDO tools, compiled for GRIB2 file format. The one available on DATARMOR (```module load cdo/1.8.0__gcc-6.3.0```) does not read GRIB2 file format. While trying to solve this issue, I have directly downloaded the files here https://cds.climate.copernicus.eu/cdsapp#!/dataset/cems-glofas-historical?tab=form, which are actually distributed in NetDCF format (in an experimental setup though).
+	* added ```croco_in_filename = 'runoff/for_croco_in.txt'``` in the USER section, and include it in ```riv_tools.write_croco_in(..., filw=croco_in_filename)```.
+	*```python make_river.py```
+
