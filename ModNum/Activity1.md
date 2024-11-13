@@ -79,7 +79,7 @@ SOURCE=~/ModNum/croco/OCEAN
    ./croco croco.in
    [or ./croco croco.in &> basin.out &]
    ```
-* To cancel it if run in backgrounf mode (i.e. ```./croco croco.in &> basin.out &```), get the PID of the croco process with unix command ```top```, then kill it with unix command ```kill -9 PID```
+* [If you run the model in backgrounf mode (i.e. ```./croco croco.in &> basin.out &```), you can stop it with the unix command  ```kill -9 PID```, where PID is the process ID associated with croco which you can get with the ```top``` unix command.]
    
  * Look at the output:
    ```
