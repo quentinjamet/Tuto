@@ -78,7 +78,9 @@ SOURCE=~/ModNum/croco/OCEAN
    ```
    ./croco croco.in
    [or ./croco croco.in &> basin.out &]
-   ``` 
+   ```
+* To cancel it if run in backgrounf mode (i.e. ```./croco croco.in &> basin.out &```), get the PID of the croco process with unix command ```top```, then kill it with unix command ```kill -9 PID```
+   
  * Look at the output:
    ```
    ncview basin_his.nc
