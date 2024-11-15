@@ -81,6 +81,11 @@ SOURCE=~/ModNum/croco/OCEAN
    ```
 * [If you run the model in backgrounf mode (i.e. ```./croco croco.in &> basin.out &```), you can stop it with the unix command  ```kill -9 PID```, where PID is the process ID associated with croco, which you can get with the ```top``` unix command.]
    
+ * Look at model variables:
+   ```
+   ncdump -h basin_his.nc
+   ```
+ 
  * Look at the output:
    ```
    ncview basin_his.nc
