@@ -132,5 +132,6 @@ defined in the ```param.h``` file). Type in your terminal:
    * What is the Coriolis parameter?
    * What is the boundary condition?
    * What is the bottom condition?
+   * What is the accuracy of the advection scheme?
  * About the circulation:
     * Is it similar to Stommel’s gyre (http://ido.at.fcen.uba.ar/index_archivos/Stommel_1948.pdf)?
