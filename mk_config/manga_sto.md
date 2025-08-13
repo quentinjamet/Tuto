@@ -210,7 +210,7 @@ Download necessary data with ```download_glorys_data_copernicus_cli.sh```:
 
 
 <!--- /////////////////////////////////////////// -->
-## Prepare bathy, initial, obcs and foprcing files
+## Prepare bathy, initial, obcs and forcing files
 <!--- /////////////////////////////////////////// -->
 
 In case you run away at the end of the previous section and start again from a fresh shell (and mind), first things first:
