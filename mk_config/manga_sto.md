@@ -223,7 +223,7 @@ In case you run away at the end of the previous section and start again from a f
   ```
 Then you should be fine for next steps ...
 
-As their names indicate (or not), ```make_*.py``` are used to generate grid, initial conditions, and forcing files (atm, obcs, tides, runoff). We will follow them step by step (always use ```python3.9```):
+As their names indicate, ```make_*.py``` are used to generate grid, initial conditions, and forcing files (atm, obcs, tides, runoff). We will follow them step by step (always use ```python3.9```):
 
   * ```make_grid.py```: 
 	* generate bathy file
@@ -244,7 +244,7 @@ As their names indicate (or not), ```make_*.py``` are used to generate grid, ini
 
 
   * ```make_ini.py```:
-	* update ```input_dir```, ``Yini,Mini,Dini``` in agreement with what was provided in ```download_glorys_data_copernicus_cli.sh```
+	* update ```input_dir```, ```Yini,Mini,Dini``` in agreement with what was provided in ```download_glorys_data_copernicus_cli.sh```
 	* update ```sigma_params``` -> deals with vertical mesh, will be used to define obcs files. Should provide these variables also in ```make_bry.py``` and in ```croco.in``` to define S-coordinates.
 	* ```python3.9 make_ini.py```
 	* files are generated in ```croco_dir```
